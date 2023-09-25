@@ -1,0 +1,76 @@
+.main{
+  display: flex;
+  height: 100vh;
+justify-content: center;
+align-items: center;
+}
+.calculator {
+  max-width: 320px;
+  max-height: 350px;
+  margin: 0 auto;
+  border: 2px solid #333;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+#display {
+  font-size: 2em;
+  text-align: right;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+button {
+  font-size: 1.5em;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #ddd;
+}
+
+button#equals {
+  grid-column: span 2;
+  background-color: #f39c12;
+  color: #fff;
+}
+button#add {
+  background-color: #12b3f3;
+  color: #fff;
+}
+button#subtract {
+  background-color: #7312f3;
+  color: #fff;
+}
+button#multiply {
+  background-color: #8e12f3;
+  color: #fff;
+}
+button#divide {
+  background-color: #ad259b;
+  color: #fff;
+}
+button#clear {
+  grid-column: span 2;
+  background-color: #f31212;
+  color: #fff;
+}
+button#clear:hover {
+  background-color: #c0392b;
+}
+
