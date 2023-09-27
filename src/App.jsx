@@ -20,15 +20,30 @@ const App = () => {
           setDisplay(newFormula || '0');
         }
         break;
+        case '.':
+          const lastCha = formula.charAt(formula.length - 1);
+          if (lastCha === '.' || /[+\-*/]/.test(lastCha)) {
+            return;
+          }
+          const parts = formula.split(/[+\-*/]/);
+          const lastPart = parts[parts.length - 1];
+          if (lastPart.includes('.')) {
+            return;
+          }
+          const newFormula = formula + '.';
+          setFormula(newFormula);
+          setDisplay(newFormula);
+          break;
       case '=':
-        try {
-          const result = eval(formula);
-          setDisplay(result.toString());
-          setFormula(result.toString());
-        } catch {
-          setDisplay('Error');
-        }
-        break;
+      try {
+        const result = eval(formula);
+        const formattedResult = Number(result).toFixed(4);
+        setDisplay(formattedResult);
+        setFormula(formattedResult);
+      } catch {
+        setDisplay('Error');
+      }
+      break;
       default:
         const lastChar = formula.charAt(formula.length - 1);
         if (/[+\-*/]/.test(lastChar) && /[+\-*/]/.test(value)) {
@@ -56,7 +71,7 @@ const App = () => {
         <div id="display">{display}</div>
         <div className="buttons">
           {buttonValues.map((item) => (
-            <button key={item} id={item.id}
+            <button key={item.id} id={item.id}
               onClick={() => handleButtonClick(item.name)}>
               {item.name}
             </button>
